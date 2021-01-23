@@ -9,6 +9,7 @@ public class FileRetrieval {
 	public void retrieve(String location) {
 
 		File file = new File(location);
+		if(file.isFile()) {
 		File[] files = file.listFiles();
 		System.out.println("Number of files : " + files.length);
 
@@ -20,7 +21,9 @@ public class FileRetrieval {
 
 			System.out.println(eachfile.getName());
 		}
-
+		}else {
+			System.out.println("Enter a valid location.");
+		}
 	}
 
 }
