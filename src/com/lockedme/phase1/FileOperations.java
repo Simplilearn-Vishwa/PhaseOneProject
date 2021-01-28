@@ -1,7 +1,7 @@
 package com.lockedme.phase1;
 
 import java.io.File;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
@@ -16,32 +16,24 @@ public class FileOperations {
 
 	// To Add a File
 	public void addFile(String rootDir, String fileName) {
-
-		File file = new File(rootDir, fileName);
-
-		FileWriter fileWriter = null;
+		
+		Path path = Paths.get(rootDir,fileName);
+		
 		try {
-			if (file.createNewFile())
-				System.out.println("File created!");
-			else
-				System.out.println("File already exists!");
-			fileWriter = new FileWriter(file);
-			System.out.println("Enter the contents of the File");
-			fileWriter.write(sc.next());
+			
+			Path p= Files.createFile(path);     //creates file at specified location  
+			System.out.println("File Created at Path: "+p);  
+			/*
+			 * File file = new File(rootDir, fileName);
+			 * 
+			 * if (file.createNewFile()) System.out.println("File created!"); else
+			 * System.out.println("File already exists!");
+			 */
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Incorrect file path!");
 			e.printStackTrace();
-		} finally {
-			sc.close();
-			try {
-				fileWriter.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
-
 	}
 	// To Delete a File
 
@@ -49,6 +41,7 @@ public class FileOperations {
 		Path path = Paths.get(filePath);
 		try {
 			Files.delete(path);
+			System.out.println("File Deleted!");
 		} catch (NoSuchFileException exce) {
 			System.out.println("There is no file!!");
 			exce.printStackTrace();

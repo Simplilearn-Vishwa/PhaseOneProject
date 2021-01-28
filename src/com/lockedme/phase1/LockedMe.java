@@ -12,8 +12,8 @@ public class LockedMe {
 		System.out.println("Senior Software Engineer@Simplilearn");
 		System.out.println("***************************************************");
 
+		
 		FileRetrieval read = new FileRetrieval();
-
 		FileOperations ops = new FileOperations();
 
 		Scanner sc = new Scanner(System.in);
@@ -35,8 +35,9 @@ public class LockedMe {
 				int ch = 0;
 				ch = sc.nextInt();
 				if (ch == 1) {
-					System.out.println("Please enter the root directory and filename");
+					System.out.println("Please enter the root directory");
 					String rootDir = sc.next();
+					System.out.println("Please enter the file Name");
 					String fileName = sc.next();
 					ops.addFile(rootDir, fileName);
 

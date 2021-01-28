@@ -9,7 +9,7 @@ public class FileRetrieval {
 	public void retrieve(String location) {
 
 		File file = new File(location);
-		if(file.isFile()) {
+		if(file.isDirectory()) {
 		File[] files = file.listFiles();
 		System.out.println("Number of files : " + files.length);
 
